@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>India Soft Solutions (ISS)</title>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/logo.ico" />
+
+  <!-- ✅ AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <!-- ✅ Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      user-select: none;
+    }
+
+    body {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      background: #f9f9f9;
+      color: #222;
+    }
+
+    img {
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    /* ===== Navbar ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    header h1 {
+      font-size: 1.8em;
+      color: #4d10f2;
+      font-weight: 700;
+    }
+
+    header img {
+      height: 75px;
+      margin-right: 10px;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #4d10f2;
+    }
+
+    /* ===== Home Section ===== */
+    #home {
+      height: 100vh;
+      background: linear-gradient(135deg, #4d10f2, #2596be);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to top, #f9f9f9, transparent);
+    }
+
+    #home h1 {
+      font-size: 3em;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    #home h1 span {
+      color: #ffe600;
+    }
+
+    #home p {
+      font-size: 1.2em;
+      max-width: 650px;
+      margin: 0 auto 25px;
+      line-height: 1.6em;
+    }
+
+    .home-btn {
+      background: white;
+      color: #4d10f2;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .home-btn:hover {
+      background: #ffe600;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+   /* ===== About Section ===== */
+#about {
+  background: #ffffff;
+  padding: 160px 10% 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.about-header h2 {
+  font-size: 2.5em;
+  color: #4d10f2;
+  font-weight: 700;
+  background: linear-gradient(135deg, #e9e6ff, #f3f8ff);
+  display: inline-block;
+  padding: 12px 40px;
+  border-radius: 40px;
+  box-shadow: 0 4px 20px rgba(77, 16, 242, 0.1);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  position: relative;
+  overflow-x: clip; /* ✅ Prevents horizontal scrollbar during animation */
+}
+
+/* ===== Card Styling ===== */
+.about-box {
+  background: linear-gradient(135deg, #f8f7ff, #f0eeff);
+  border-radius: 20px;
+  padding: 35px 28px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform, opacity;
+  overflow: hidden; /* ✅ Ensures no overflow even during movement */
+  border: 1px solid #e6e4ff;
+}
+
+/* ===== Card Headings ===== */
+.about-box h3 {
+  text-align: center;
+  color: #4d10f2;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.about-box h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(to right, #4d10f2, #7c3aed);
+  border-radius: 2px;
+}
+
+/* ===== Card Paragraphs ===== */
+.about-box p {
+  line-height: 1.8;
+  color: #444;
+  font-size: 1.05em;
+  text-align: center;
+}
+
+/* ===== Entry Animations ===== */
+.from-left { transform: translateX(-80px); }
+.from-center { transform: scale(0.85); }
+.from-right { transform: translateX(80px); }
+
+.about-box.visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* ===== Hover Effect ===== */
+.about-box:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(77, 16, 242, 0.15);
+  transition: all 0.4s ease;
+  background: linear-gradient(135deg, #f0eeff, #e8e5ff);
+}
+
+/* ===== Responsive Fix ===== */
+@media (max-width: 768px) {
+  .about-header h2 {
+    font-size: 1.9em;
+    padding: 10px 25px;
+  }
+  .about-box {
+    padding: 25px 20px;
+  }
+}
+
+/* ===== Global Overflow Fix (Keeps layout clean on all devices) ===== */
+html, body {
+  width: 100%;
+  overflow-x: clip !important; /* ✅ Replaces hidden with clip for smoothness */
+}
+
+section, header, footer {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+    /* ===== Services Section CSS ===== */
+#services {
+  padding: 100px 5%;
+  background: #fdfdfd;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+#services h2 {
+  font-size: 2.2em;
+  color: #4d10f2;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.services-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ===== Service Card Base ===== */
+.service-card {
+  background: linear-gradient(135deg, #f8f7ff, #f0eeff);
+  border-radius: 15px;
+  padding: 25px 20px;
+  min-height: 220px;
+  width: 240px; /* Fixed width for consistent sizing */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform, opacity;
+  border: 1px solid #e6e4ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* ===== Service Card Icons ===== */
+.service-card .icon {
+  margin-bottom: 15px;
+  display: block;
+  text-align: center;
+}
+
+.service-card .icon img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ===== Service Card Headings ===== */
+.service-card h3 {
+  text-align: center;
+  color: #4d10f2;
+  font-size: 1.3em;
+  margin-bottom: 15px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.service-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(to right, #4d10f2, #7c3aed);
+  border-radius: 2px;
+}
+
+/* ===== Service Card Paragraphs ===== */
+.service-card p {
+  line-height: 1.6;
+  color: #444;
+  font-size: 0.95em;
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* ===== Flip Directions ===== */
+.flip-clockwise {
+  transform: rotateY(90deg) scale(0.9);
+}
+
+.flip-anticlockwise {
+  transform: rotateY(-90deg) scale(0.9);
+}
+
+/* ===== Visible (Flipped Into View) ===== */
+.service-card.visible {
+  transform: rotateY(0deg) scale(1);
+  opacity: 1;
+}
+
+/* ===== Hidden States ===== */
+.service-card.hidden-clockwise {
+  transform: rotateY(90deg) scale(0.9);
+  opacity: 0;
+}
+
+.service-card.hidden-anticlockwise {
+  transform: rotateY(-90deg) scale(0.9);
+  opacity: 0;
+}
+
+/* ===== Hover Effect ===== */
+.service-card:hover {
+  transform: rotateY(0deg) translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(77, 16, 242, 0.15);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #f0eeff, #e8e5ff);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  #services {
+    padding: 80px 20px;
+  }
+  
+  #services h2 {
+    font-size: 1.8em;
+    margin-bottom: 40px;
+  }
+  
+  .service-card {
+    width: 100%;
+    max-width: 280px;
+    padding: 25px 20px;
+    min-height: 200px;
+  }
+  
+  .services-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .services-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+  
+  .service-card {
+    width: 280px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .services-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap; /* Force all cards in one line */
+  }
+  
+  .service-card {
+    flex: 0 0 auto; /* Don't grow or shrink */
+    width: 230px;
+  }
+}
+
+/* For very large screens */
+@media (min-width: 1400px) {
+  .service-card {
+    width: 250px;
+  }
+}
+
+    /* ===== Contact Section ===== */
+    #contact {
+      background: #f8f8ff;
+      padding: 120px 15%;
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-size: 2.2em;
+      color: #4d10f2;
+      margin-bottom: 40px;
+    }
+
+    .contact-subtitle {
+      font-size: 1.1em;
+      color: #666;
+      margin-bottom: 50px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===== Contact Buttons Container ===== */
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ===== Individual Contact Button ===== */
+    .contact-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      height: 200px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2em;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(30px);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .contact-btn:nth-child(1) { animation-delay: 0.1s; }
+    .contact-btn:nth-child(2) { animation-delay: 0.2s; }
+    .contact-btn:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .contact-btn i {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+
+    .contact-btn span {
+      margin-top: 5px;
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
+
+    /* ===== Button Colors ===== */
+    .contact-btn.call {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+    }
+
+    .contact-btn.whatsapp {
+      background: linear-gradient(135deg, #4d10f2, #7c3aed);
+    }
+
+    .contact-btn.email {
+      background: linear-gradient(135deg, #EA4335, #D14836);
+    }
+
+    /* ===== Hover Effects ===== */
+    .contact-btn:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-btn.call:hover {
+      background: linear-gradient(135deg, #1DA851, #0E7C6F);
+    }
+
+    .contact-btn.whatsapp:hover {
+      background: linear-gradient(135deg, #3b0ec9, #5b21b6);
+    }
+
+    .contact-btn.email:hover {
+      background: linear-gradient(135deg, #D33427, #B03A2E);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #4d10f2;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; padding: 8px 10px; }
+      header img { height: 60px; }
+      header h1 { font-size: 1.3em; }
+      nav { gap: 14px; flex-wrap: nowrap; }
+      #home h1 { font-size: 2em; }
+      #home p { font-size: 1em; }
+      .service-card {
+        padding: 30px 20px;
+        min-height: 250px;
+      }
+      
+      /* Contact section responsive */
+      .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .contact-btn {
+        width: 250px;
+        height: 180px;
+      }
+      
+      .contact-btn i {
+        font-size: 40px;
+      }
+    }
+      /* ===== Fix Right Side Extra Space on Mobile ===== */
+html, body {
+  width: 100%;
+  overflow-x: hidden !important;
+}
+
+section, header, footer, .about-content, .services-container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, iframe, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden !important;
+}
+
+header, footer, .services-container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+/* ===== Products Section (MATCHES SITE THEME) ===== */
+#products {
+  padding: 140px 10%;
+  background: #ffffff;
+  text-align: center;
+}
+
+#products h2 {
+  font-size: 2.4em;
+  color: #4d10f2;
+  margin-bottom: 60px;
+  font-weight: 700;
+}
+
+/* ===== Product Card ===== */
+.product-card {
+  max-width: 900px;
+  margin: auto;
+  background: linear-gradient(135deg, #f8f7ff, #f0eeff);
+  border-radius: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 50px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+  border: 1px solid #e6e4ff;
+
+  /* Animation base */
+  opacity: 0;
+  transform: translateY(80px) scale(0.95);
+  transition: all 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform, opacity;
+}
+
+/* ===== Visible State ===== */
+.product-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ===== Hover Effect ===== */
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(77, 16, 242, 0.15);
+}
+
+/* ===== Logo ===== */
+.product-logo img {
+  width: 180px;
+  margin: auto;
+}
+
+/* ===== Info ===== */
+.product-info h3 {
+  font-size: 2em;
+  color: #4d10f2;
+  margin-bottom: 15px;
+}
+
+.product-info p {
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+/* ===== Buttons ===== */
+.product-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.product-btn {
+  padding: 14px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #4d10f2, #7c3aed);
+  transition: all 0.3s ease;
+}
+
+.product-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.product-btn.web {
+  background: linear-gradient(135deg, #06b6d4, #0284c7);
+}
+
+.product-btn.android {
+  background: linear-gradient(135deg, #22c55e, #15803d);
+}
+
+.product-btn.windows {
+  background: linear-gradient(135deg, #6366f1, #4338ca);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .product-card {
+    grid-template-columns: 1fr;
+    padding: 40px 25px;
+  }
+
+  .product-logo img {
+    width: 140px;
+  }
+
+  .product-info h3 {
+    font-size: 1.6em;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- Disable Right Click -->
+  <script>
+    document.addEventListener("contextmenu", e => e.preventDefault());
+  </script>
+
+  <!-- ===== Navbar ===== -->
+  <header>
+    <div style="display:flex;align-items:center;">
+      <img src="images/logo.png" alt="ISS Logo" />
+      <h1>India Soft Solutions</h1>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#products">Products</a>  
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== Home ===== -->
+  <section id="home">
+    <h1>Welcome to <span>India Soft Solutions</span></h1>
+    <p>We design and develop powerful digital experiences — from mobile apps to web platforms — to help businesses grow with technology.</p>
+    <a href="#services" class="home-btn">Explore Our Work</a>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section id="about">
+    <div class="about-header">
+      <h2>About Us</h2>
+    </div>
+    <div class="about-content">
+      <!-- Static About Content -->
+      <div class="about-box from-left">
+        <h3>🏢 Who We Are</h3>
+        <p>India Soft Solutions (ISS) is a creative and technology-driven SaaS company focused on delivering modern, high-quality digital solutions for businesses and individuals. We specialize in web development, mobile apps, and customized software designed to enhance user experience and business growth. With innovation, precision, and customer satisfaction at our core, ISS transforms ideas into impactful digital realities.</p>
+      </div>
+      <div class="about-box from-center">
+        <h3>🎯 Our Mission</h3>
+        <p>To provide reliable, scalable, and high-performance digital solutions that empower clients to reach new heights through technology and innovation. We strive to blend creativity with technical excellence, ensuring every project reflects quality, precision, and long-term value. Our mission is to help businesses evolve and stay ahead in an ever-changing digital world.</p>
+      </div>
+      <div class="about-box from-right">
+        <h3>🌟 Our Vision</h3>
+        <p>To be a global leader in digital innovation — inspiring change through smart technology, sustainable growth, and creative transformation. We envision a connected world where every business, regardless of size, can harness the power of technology to thrive, innovate, and make a positive impact on society.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Services ===== -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services-container">
+      <!-- Static Services Content -->
+      <div class="service-card flip-clockwise">
+        <div class="icon">
+          <img src="images/service_icons/www.png" alt="Web Development Icon">
+        </div>
+        <h3>Web Development</h3>
+        <p>Custom websites with responsive design.</p>
+      </div>
+      
+      <div class="service-card flip-anticlockwise">
+        <div class="icon">
+          <img src="images/service_icons/appDev.png" alt="Mobile App Development Icon">
+        </div>
+        <h3>Mobile App Development</h3>
+        <p>Android and iOS mobile app solutions.</p>
+      </div>
+      
+      <div class="service-card flip-clockwise">
+        <div class="icon">
+          <img src="images/service_icons/ux-ui.jpg" alt="Software Solutions Icon">
+        </div>
+        <h3>UI/UX Design</h3>
+        <p>Beautiful and user-friendly interface designs.</p>
+      </div>
+      
+      <div class="service-card flip-anticlockwise">
+        <div class="icon">
+          <img src="images/service_icons/Support___Maintenance.png" alt="Support & Maintenance Icon">
+        </div>
+        <h3>Support & Maintenance</h3>
+        <p>24/7 support for clients</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Products ===== -->
+  <section id="products">
+    <h2>Our Products</h2>
+    <div class="product-card">
+      <div class="product-logo">
+        <img src="images/learndartlogo.png" alt="LearnDart Logo">
+      </div>
+      <div class="product-info">
+        <h3>LearnDart</h3>
+        <p>
+          LearnDart is a complete learning platform for mastering the Dart programming language.
+          It includes structured lessons, code examples, and practice questions —
+          available on Web, Windows, and Android.
+        </p>
+        <div class="product-buttons">
+          <a href="https://learndart.netlify.app"
+             class="product-btn web"
+             target="_blank"
+             rel="noopener noreferrer">
+            🌐 Open Web App
+          </a>
+          <a href="downloads/LearnDartWindows.zip"
+             class="product-btn windows"
+             download>
+            🖥 Download for Windows
+          </a>
+          <a href="https://github.com/tnhisecure/LearnDart/releases/download/v1.0.0/LearnDart.apk"
+             class="product-btn android"
+             target="_blank"
+             rel="noopener noreferrer">
+            📱 Download APK
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p class="contact-subtitle">Get in touch with us through any of these convenient methods</p>
+    
+    <div class="contact-buttons">
+      <!-- Call Button -->
+      <a href="tel:+918250227952" class="contact-btn call">
+        <i class="fas fa-phone-alt"></i>
+        <span>CALL US</span>
+       
+      </a>
+      
+      <!-- WhatsApp Button -->
+      <a href="https://wa.me/918250227952?text=Hello%20India%20Soft%20Solutions,%20I%20would%20like%20to%20discuss%20a%20project" 
+         class="contact-btn whatsapp" 
+         target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>WHATSAPP</span>
+       
+      </a>
+      
+      <!-- Email Button -->
+      <a href="mailto:indiasoftsolutions2025@gmail.com?subject=Enquiry%20from%20Website&body=Hello%20India%20Soft%20Solutions,%0A%0AI%20would%20like%20to%20get%20more%20information%20about%20your%20services." 
+         class="contact-btn email">
+        <i class="fas fa-envelope"></i>
+        <span>EMAIL US</span>
+        
+      </a>
+    </div>
+    
+    <p style="margin-top: 50px; color: #666; font-size: 0.95em;">
+      We typically respond 24/7 during business days.
+    </p>
+  </section>
+
+  <footer>&copy; 2025 India Soft Solutions | All Rights Reserved.</footer>
+
+  <!-- ===== Scripts ===== -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({ duration: 1000, once: false });
+
+    // Product Card Animation
+    document.addEventListener("DOMContentLoaded", () => {
+      const productCard = document.querySelector(".product-card");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            productCard.classList.add("visible");
+          } else {
+            productCard.classList.remove("visible");
+          }
+        });
+      }, { threshold: 0.35 });
+      observer.observe(productCard);
+    });
+
+    // Scroll Animations for other sections
+    document.addEventListener("DOMContentLoaded", () => {
+      const aboutBoxes = document.querySelectorAll(".about-box");
+      const services = document.querySelectorAll(".service-card");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const el = entry.target;
+
+          // About Section Animation
+          if (el.classList.contains("about-box")) {
+            if (entry.isIntersecting) {
+              el.classList.add("visible");
+              el.classList.remove("hidden-left", "hidden-center", "hidden-right");
+            } else {
+              if (el.classList.contains("from-left")) el.classList.add("hidden-left");
+              else if (el.classList.contains("from-center")) el.classList.add("hidden-center");
+              else if (el.classList.contains("from-right")) el.classList.add("hidden-right");
+              el.classList.remove("visible");
+            }
+          }
+
+          // Service Section Animation
+          if (el.classList.contains("service-card")) {
+            if (entry.isIntersecting) {
+              el.classList.add("visible");
+              el.classList.remove("hidden-clockwise", "hidden-anticlockwise");
+            } else {
+              if (el.classList.contains("flip-clockwise"))
+                el.classList.add("hidden-clockwise");
+              else if (el.classList.contains("flip-anticlockwise"))
+                el.classList.add("hidden-anticlockwise");
+              el.classList.remove("visible");
+            }
+          }
+        });
+      }, { threshold: 0.3 });
+
+      // Observe all elements
+      aboutBoxes.forEach(box => observer.observe(box));
+      services.forEach(card => observer.observe(card));
+    });
+
+    // Detect if device is mobile for better call experience
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // Optional: Add confirmation for call button on desktop
+    document.querySelector('.contact-btn.call').addEventListener('click', function(e) {
+      if (!isMobileDevice()) {
+        if (!confirm("You're on a desktop device. Would you like to copy the phone number instead?")) {
+          e.preventDefault();
+          // Copy phone number to clipboard
+          navigator.clipboard.writeText("+918250227952").then(() => {
+            alert("Phone number copied to clipboard: +91 8250227952");
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
